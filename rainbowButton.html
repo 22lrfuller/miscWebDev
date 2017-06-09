@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+	<title>RAINBOWS</title>
+</head>
+<body id="body2">
+	<h1>Click da button!</h1>
+	<br>
+	<button id="clickerButton" onclick="clicky()">Rainbow Button!</button>
+	<br>
+	<h2 id="headertwo">You've clicked the button 0 times.</h2>
+	<br>
+	<br>
+	<a href="/index.php">Return to Home</a>
+</body>
+
+<script>
+var c = 0;
+var rainbowVar = 0;
+var rainbowList = ["#ff0000", "#ff6600", "#ffcc00", "#33cc33", "#3399ff", "#6600ff", "#ff00ff"];
+function clicky(){
+	c += 1;
+	rainbowVar += 1;
+	if(rainbowVar >= 6){
+		rainbowVar = 0;
+	}
+	document.getElementById("body2").style.color=rainbowList[rainbowVar];
+	document.getElementById("headertwo").innerHTML="You've clicked the button "+c+" times.";
+}
+</script>

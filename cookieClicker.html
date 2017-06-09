@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+	<title>Cookie Clicker</title>
+	<style>
+                body {
+                        background: url("") no-repeat;
+                        background-size: 100%;
+                }
+	</style>
+</head>
+<body>
+        <h2 id="cookiesDisp">Cookies: 0</h2>
+	<h2 id="cpsDisp">Cps: 0</h2>
+	<h4 id="upgradeDisp">Cpc upgrades: 0</h4>
+	<h4 id="pointerDisp">Pointers(1 Cps): 0</h4>
+	<h4 id="grandmaDisp">Grandmas(15 Cps): 0</h4>
+	<h4 id="bakeryDisp">Bakeries(200 Cps): 0</h4>
+	<h4 id="factoryDisp">Factories(650 Cps): 0</h4>
+	<h4 id="wizardDisp">Wizards(25000 Cps): 0</h4>
+    <button onclick="clickerClicked()">Click me to get cookies</button>
+	<br>
+	<br>
+	<button id="upgradeButton" onclick="upgradeClicked()"Click to increase cookies per click!(250 cookies)</button>
+	<br>
+	<br>
+	<button id="pointerButton" onclick="pointerClicked()">Click to buy a pointer!(10 cookies)</button>
+	<br>	
+	<button id="grandmaButton" onclick="grandmaClicked()">Click to buy a grandma!(100 cookies)</button>
+	<br>
+	<button id="bakeryButton" onclick="bakeryClicked()">Click to buy a bakery!(1000 cookies)</button>
+	<br>
+	<button id="factoryButton" onclick="factoryClicked()">Click to buy a factory!(7500 cookies)</button>
+	<br>
+	<button id="wizardButton" onclick="wizardClicked()">Click to buy a wizard!(100000 cookies)</button>
+	<br>
+	<br>
+	<a href="/index.php">Return To Home</a>
+</body>
+<script>
+        var cookies = 0;
+	var priceAdd = 1.2;
+
+	var upgrades = 0;
+	var upgradeCpc = 5;
+	var upgradePrice = 250;
+
+	var pointers = 0;
+	var pointerCps = 1;
+	var pointerPrice = 10;
+	var grandmas = 0;
+	var grandmaCps = 15;
+	var grandmaPrice = 100;
+	var bakeries = 0;
+	var bakeryCps = 200;
+	var bakeryPrice = 1000;
+	var factories = 0;
+	var factoryCps = 650;
+	var factoryPrice = 7500;
+	var wizards = 0;
+	var wizardCps = 25000;
+	var wizardPrice = 100000;
+
+        function clickerClicked(){
+		if(upgrades != 0){
+               		cookies += upgrades*upgradeCpc;
+		}else{
+			cookies += 1;
+		}
+                document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+        }
+	function upgradeClicked(){
+		if(cookies>=upgradePrice){
+			upgrades += 1;
+			cookies -= upgradePrice;
+			upgradePrice = Math.round(upgradePrice*priceAdd);
+			document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+			document.getElementById("upgradeDisp").innerHTML = "Cpc upgrades:  "+upgrades;
+			document.getElementById("upgradeButton").innerHTML = "Click to increase cookies per click!("+upgradePrice+" cookies)";
+		}
+	}
+	function pointerClicked(){
+		if(cookies>=pointerPrice){
+			pointers += 1;
+			cookies -= pointerPrice;
+			pointerPrice = Math.round(pointerPrice*priceAdd);
+			document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+			document.getElementById("pointerDisp").innerHTML = "Pointers(1 Cps): "+pointers;
+			document.getElementById("pointerButton").innerHTML = "Click to buy a pointer!("+pointerPrice+" cookies)";
+		}
+	}
+	function grandmaClicked(){
+		if(cookies>=grandmaPrice){
+			grandmas += 1;
+			cookies -= grandmaPrice;
+			grandmaPrice = Math.round(grandmaPrice*priceAdd);
+			document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+			document.getElementById("grandmaDisp").innerHTML = "Grandmas(15 Cps): "+grandmas;
+			document.getElementById("grandmaButton").innerHTML = "Click to buy a grandma!("+grandmaPrice+" cookies)";
+		}
+	}
+	function bakeryClicked(){
+		if(cookies>=bakeryPrice){
+			bakeries += 1;
+			cookies -= bakeryPrice;
+			bakeryPrice = Math.round(bakeryPrice*priceAdd);
+			document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+			document.getElementById("bakeryDisp").innerHTML = "Bakeries(200 Cps): "+bakeries;
+			document.getElementById("bakeryButton").innerHTML = "Click to buy a bakery!("+bakeryPrice+" cookies)";
+		}
+	}
+	function factoryClicked(){
+		if(cookies>=factoryPrice){
+			factories += 1;
+			cookies -= factoryPrice;
+			factoryPrice = Math.round(factoryPrice*priceAdd);
+			document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+			document.getElementById("factoryDisp").innerHTML = "Factories(650 Cps): "+factories;
+			document.getElementById("factoryButton").innerHTML = "Click to buy a factory!("+factoryPrice+" cookies)";
+		}
+	}
+	function wizardClicked(){
+		if(cookies>=wizardPrice){
+			wizards += 1;
+			cookies -= wizardPrice;
+			wizardPrice = Math.round(wizardPrice*priceAdd);
+			document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;
+			document.getElementById("wizardDisp").innerHTML = "Wizards(25000 Cps): "+factories;
+			document.getElementById("wizardButton").innerHTML = "Click to buy a wizard!("+wizardPrice+" cookies)";
+		}
+	}
+	setInterval(function(){
+		cookies += grandmas*grandmaCps+pointers*pointerCps+bakeries*bakeryCps+factories*factoryCps;
+                document.getElementById("cookiesDisp").innerHTML = "Cookies: "+cookies;				
+	},1000);
+	setInterval(function(){
+		var cps = grandmas*grandmaCps+pointers*pointerCps+bakeries*bakeryCps+factories*factoryCps;
+		document.getElementById("cpsDisp").innerHTML="Cps: "+cps;
+		document.getElementById("cookieDisp").innterHTML="Cookies: "+cookies;
+	},1);
+</script>
